@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Prueba_CSharp_ValeriaPiedrahita.models
 {
-    public class Dog
+    public class Dog : Animal
     {   // se crena atributos
         public bool BreedingStatus { get; set; }
         public string Temperament { get; set; }
@@ -14,7 +14,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public string CoatType { get; set; }
 
         //se crea constructor
-        public Dog(bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType)
+        public Dog(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType): base(id, name, birthdate, breed, color, weightInKg)
         {
             BreedingStatus = breedingStatus;
             Temperament = temperament;
