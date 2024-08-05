@@ -67,11 +67,14 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                     case "3":
                         break;
                     default:
+                        break;
                 }
 
 
             }
         }
+
+
         // metodo guardas nueva mascota en la lista de mascotas
         public void SaveDog(Dog newDog)
         {
@@ -83,60 +86,54 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             Console.WriteLine("Gato guardado con éxito");
         }
 
-        public void UpdateDog(List<Dog> dogs, Guid Id){
-            var dogEdit = dogs.Find(d=> d.GetId() == Id); 
-            if (dogEdit!=null)
+
+        //metodo editar perro
+        public void UpdateDog(List<Dog> dogs, Guid Id)
+        {
+            var dogEdit = dogs.Find(d => d.GetId() == Id);
+            if (dogEdit != null)
             {
                 Console.WriteLine(@"Que dato de la mascota deseas editar:
-                1. Name
-                2. Breed
-                3. weightInKg
-                4. breedingStatus
-                5. temperament
-                6. microShipNumber
-                7. coatType");
+                            1. weightInKg
+                            2. breedingStatus
+                            3. temperament
+                            4. microShipNumber
+                            5. coatType");
                 string editar = Console.ReadLine();
 
                 switch (editar)
                 {
                     case "1":
-                        Console.WriteLine("Ingrese el nuevo nombre");
-                        estudianteEditar.Nombre = Console.ReadLine();
-                        paularMenu();
+                        Console.WriteLine("Ingrese el nuevo peso en Kg");
+                        var newWeightInKg =Convert.ToDouble( Console.ReadLine());
+                        dogEdit.SetWeightInKg(newWeightInKg);
                         break;
                     case "2":
-                        Console.WriteLine("Ingrese el nuevo apellido");
-                        estudianteEditar.Apellido = Console.ReadLine();
-                        paularMenu();
+                        Console.WriteLine("Ingrese el nuevo estado de catracion");
+                        var newbreedingStatus = Convert.ToBoolean(Console.ReadLine());
+                        dogEdit.BreedingStatus = newbreedingStatus;
                         break;
                     case "3":
-                        Console.WriteLine("Ingrese el nuevo tipo de id");
-                        estudianteEditar.TipoId = Console.ReadLine();
-                        paularMenu();
+                        Console.WriteLine("Ingrese el nuevo temperamento");
+                        var newtemperament = Console.ReadLine().ToLower();
+                        dogEdit.Temperament = newtemperament;
                         break;
                     case "4":
-                        Console.WriteLine("Ingrese el nuevo numero de id");
-                        estudianteEditar.NumId = Console.ReadLine();
-                        paularMenu();
+                        Console.WriteLine("Ingrese el nuevo numero de microShip");
+                        var newmicroShipNumber = Console.ReadLine();
+                        dogEdit.MicroShipNumber = newmicroShipNumber;
                         break;
                     case "5":
-                        Console.WriteLine("Ingrese la nueva carrera");
-                        estudianteEditar.Carrera = Console.ReadLine();
-                        paularMenu();
-                        break;
-                    case "6":
-                        Console.WriteLine("Estas seguro/a que deseas cambiar el estado de matriculacion (si / no)");
-                        string respuesta = Console.ReadLine().ToLower();
-                        if (respuesta == "si")
+                        Console.WriteLine("Ingrese la nueva longitud de pelo");
+                        var newcoatType = Console.ReadLine().ToLower();
+                        if (newcoatType!= "Sin pelo" && newcoatType!= "Pelo corto" && newcoatType != "Pelo mediano" &&  newcoatType != "Pelo largo".ToLower())
                         {
-                            estudianteEditar.Matriculado = !estudianteEditar.Matriculado;
+                            dogEdit.CoatType = newcoatType;
                         }
-                        paularMenu();
                         break;
 
                     default:
                         Console.WriteLine("Opcion invalida");
-                        paularMenu();
                         break;
                 }
             }

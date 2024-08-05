@@ -40,14 +40,21 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         }
         // metodo para calcular edad del animal, se ve reflejada en el metodo ShowInforacion en dog and cat
         protected int CalculateAgeInMonths(){
-            DateOnly CurrentDate = DateOnly.FromDateTime(DateTime.Now);//resta la fecha actual con la fecha de nacimiento
-            int age = CurrentDate.Month - Birthdate.Month;
+            DateTime CurrentDate = DateTime.Now;//resta la fecha actual con la fecha de nacimiento
+            int age = (CurrentDate.Year - Birthdate.Year)*12+CurrentDate.Month-CurrentDate.Month;// compara los tiempos para saber que tan viejo es el empleado
             return age;//devuelve la edad
         }
 
         public Guid  GetId(){
             return Id;
         }
+        // public void SetNombre(string nuevoNombre){
+        //     Name = nuevoNombre;
+        // }
+        public void SetWeightInKg(double weightInKg){
+            WeightInKg = weightInKg;
+        }
+
 
 
     }

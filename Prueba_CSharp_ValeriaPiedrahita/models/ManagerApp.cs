@@ -17,7 +17,8 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             Console.WriteLine("Ingrese el nombre");
             string name = Console.ReadLine(); 
             Console.WriteLine("Ingrese la fecha de nacimiento (YYYY-MM-DD)");
-            DateOnly birthdate = DateOnly.Parse(Console.ReadLine());
+            DateTime birthdate = Convert.ToDateTime(Console.ReadLine());
+            DateOnly birthdate1 = DateOnly.FromDateTime(birthdate);
             Console.WriteLine("Ingrese el tipo de raza");
             string breed = Console.ReadLine();
             Console.WriteLine("Ingrese el color");
@@ -48,7 +49,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 return CreateDog();
             }// se realizan validaciones con un ifelse para validar que el usuario este ingresando bien los datos
 
-            return new Dog(id, name, birthdate, breed, color, weightInKg, breedingStatus, temperament, microShipNumber, barkVolume, coatType);// se retorna una instancia
+            return new Dog(id, name, birthdate1, breed, color, weightInKg, breedingStatus, temperament, microShipNumber, barkVolume, coatType);// se retorna una instancia
         }
 
         public static Cat CreateCat(){
