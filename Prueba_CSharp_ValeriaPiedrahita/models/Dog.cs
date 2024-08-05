@@ -14,7 +14,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public string CoatType { get; set; }
 
         //se crea constructor
-        public Dog(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType) : base(id, name, birthdate, breed, color, weightInKg)
+        public Dog(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType) : base(id, name, birthdate, breed, color, weightInKg) //el base ya que el padre tambien tiene constructor
         {
             BreedingStatus = breedingStatus;
             Temperament = temperament;
@@ -23,6 +23,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             CoatType = coatType;
         }
 
+        // se hereda metodo de la clase animal
         public override void ShowInforacion()
         {
             Console.WriteLine(@$"
@@ -39,6 +40,8 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             Bark Volume: {BarkVolume}
             Coat Type: {CoatType}");
         }
+
+        // se crea metodo con validacion para ver si se castró al animal
         public void CastrateAnimal()
         {
             if (BreedingStatus == false)
@@ -52,6 +55,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             }
         }
 
+        //se crea metodo con validacion para ver si se peluquea a la mascota
         public void Hairdress()
         {   
             if (CoatType != "corto".ToLower())

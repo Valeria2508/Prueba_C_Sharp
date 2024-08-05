@@ -12,12 +12,12 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public string FurLenght { get; set; }
 
         // constructor de la clase  
-        public Cat(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string furLenght) : base(id, name, birthdate, breed, color, weightInKg)
+        public Cat(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string furLenght) : base(id, name, birthdate, breed, color, weightInKg) //el base ya que el padre tambien tiene constructor
         {
             BreedingStatus = breedingStatus;
             FurLenght = furLenght;
         }
-
+        // se hereda metodo de la clase animal
         public override void ShowInforacion()
         {
             Console.WriteLine(@$"
@@ -31,7 +31,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             Breeding Status: {BreedingStatus}
             Fur Lenght: {FurLenght} cm");
         }
-
+        // se crea metodo con validacion para ver si se castró al animal
         public void CastrateAnimal()
         {
             if (BreedingStatus == false)
@@ -44,7 +44,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 BreedingStatus = true;
             }
         }
-
+        //se crea metodo con validacion para ver si se peluquea a la mascota
         public void Hairdress(){
             if (FurLenght == "largo" || FurLenght == "muy largo")
             {
