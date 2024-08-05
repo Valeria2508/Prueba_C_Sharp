@@ -60,7 +60,12 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         }
 
         public void Hairdress(){
-
+            Console.WriteLine("Escriba (si) ");
+            if (CoatType == "")
+            {
+                
+            }
+            
         }
 
 
