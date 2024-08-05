@@ -52,6 +52,8 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 Console.WriteLine("                             7. Show All Patients                                        ");
                 Console.WriteLine("                             8. Show Animals                                             ");
                 Console.WriteLine("                             9. Show Paients                                             ");
+                Console.WriteLine("                             10. CastrateAnimal                                          ");
+                Console.WriteLine("                             11. ShowHeader                                              ");
                 Console.WriteLine("                             0. Exit                                                     ");
                 Console.WriteLine("=========================================================================================");
 
@@ -107,6 +109,14 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                         Console.WriteLine("Ingrese el id del paciente");
                         var patientId = Guid.Parse(Console.ReadLine());
                         veterinary.ShowPaient(patientId);
+                        PausarMenu();
+                        break;
+                    case "10":
+                        perro1.CastrateAnimal();
+                        PausarMenu();
+                        break;
+                    case "11":
+                        perro1.Hairdress();
                         PausarMenu();
                         break;
                     default:

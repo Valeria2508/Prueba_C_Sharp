@@ -41,7 +41,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             else
             {
                 Console.WriteLine("El animal aun NO se encuentra castrado, aun se puede reproducir");
-                BreedingStatus = true;
+                BreedingStatus = false;
             }
         }
         //se crea metodo con validacion para ver si se peluquea a la mascota
