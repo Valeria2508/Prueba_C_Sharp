@@ -30,8 +30,11 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
 
 
         // crear menu
-        public void Menu()
+        public static void Menu()
         {
+            var veterinary = new VeterinaryClinic();
+            var perro1 = new Dog("bruno", new DateOnly(2020, 02, 02), "sad", "sd", 19.6, true, "timido", "12", "sdf", "Sin pelo");
+            veterinary.SaveDog(perro1);
 
             bool exit = false;
             while (!exit)
@@ -40,8 +43,8 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 Console.WriteLine("                           Centro de Veterinaria                                     ");
                 Console.WriteLine("=========================================================================================");
                 Console.WriteLine("                            Ingrese su opción:                                           ");
-                Console.WriteLine("                             1. Save a Dog                                               ");
-                Console.WriteLine("                             2. Save a cat                                               ");
+                Console.WriteLine("                             1. Save a Cat                                              ");
+                Console.WriteLine("                             2. Save a Dog                                               ");
                 Console.WriteLine("                             3. Update Dog                                               ");
                 Console.WriteLine("                             4. Update Cat                                               ");
                 Console.WriteLine("                             5. Delete Dog                                               ");
@@ -57,14 +60,54 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 switch (option)
                 {
                     case "1":
-                        Dog newDog = ManagerApp.CreateDog();
-                        SaveDog(newDog);
+                        veterinary.SaveCat(ManagerApp.CreateCat());
+                        PausarMenu();
                         break;
                     case "2":
-                        Cat newCat = ManagerApp.CreateCat();
-                        SaveCat(newCat);
+                        veterinary.SaveDog(ManagerApp.CreateDog());
+                        PausarMenu();
                         break;
                     case "3":
+                        Console.WriteLine("Ingrese el Id para editar el perro");
+                        Guid idDogToEdit = Guid.Parse(Console.ReadLine());
+                        veterinary.UpdateDog(veterinary.Dogs, idDogToEdit);
+                        PausarMenu();
+
+                        break;
+                    case "4":
+                        Console.WriteLine("Ingrese el Id para editar el gato");
+                        Guid idCatToEdit = Guid.Parse(Console.ReadLine());
+                        veterinary.UpdateCat(veterinary.Cats, idCatToEdit);
+                        PausarMenu();
+                        break;
+                    case "5":
+                        Console.WriteLine("Ingrese el Id para eliminar el perro");
+                        Guid idDogToDelete = Guid.Parse(Console.ReadLine());
+                        veterinary.DeleteDog(veterinary.Dogs, idDogToDelete);
+                        PausarMenu();
+
+                        break;
+                    case "6":
+                        Console.WriteLine("Ingrese el Id para eliminar el gato");
+                        Guid idCatToDelete = Guid.Parse(Console.ReadLine());
+                        veterinary.DeleteCat(veterinary.Cats, idCatToDelete);
+                        PausarMenu();
+                        break;
+                    case "7":
+                        veterinary.ShowAllPatients();
+                        PausarMenu();
+                        break;
+                    case "8":
+                        Console.WriteLine("Ingrese el tipo de animal que quiera encontrar (perro, gato)");
+                        string animalToFind = Console.ReadLine();
+                        veterinary.ShowAnimals(animalToFind);
+                        PausarMenu();
+                        break;
+                    case "9":
+                        Console.WriteLine("Ingrese el id del paciente");
+                        var patientId = Guid.Parse(Console.ReadLine());
+                        veterinary.ShowPaient(patientId);
+                        PausarMenu();
                         break;
                     default:
                         break;
@@ -78,11 +121,13 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         // metodo guardas nueva mascota en la lista de mascotas
         public void SaveDog(Dog newDog)
         {
+            Dogs.Add(newDog);
             Console.WriteLine("Perro guardado con éxito");
         }
 
         public void SaveCat(Cat newCat)
         {
+            Cats.Add(newCat);
             Console.WriteLine("Gato guardado con éxito");
         }
 
@@ -105,7 +150,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 {
                     case "1":
                         Console.WriteLine("Ingrese el nuevo peso en Kg");
-                        var newWeightInKg =Convert.ToDouble( Console.ReadLine());
+                        var newWeightInKg = Convert.ToDouble(Console.ReadLine());
                         dogEdit.SetWeightInKg(newWeightInKg);
                         break;
                     case "2":
@@ -116,6 +161,10 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                     case "3":
                         Console.WriteLine("Ingrese el nuevo temperamento");
                         var newtemperament = Console.ReadLine().ToLower();
+                        if (newtemperament != "timido" && newtemperament != "normal" && newtemperament != "agresivo".ToLower()) // se realizan validaciones con un ifelse
+                        {
+                            Console.WriteLine("Opcion inválida");
+                        }
                         dogEdit.Temperament = newtemperament;
                         break;
                     case "4":
@@ -126,7 +175,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                     case "5":
                         Console.WriteLine("Ingrese la nueva longitud de pelo");
                         var newcoatType = Console.ReadLine().ToLower();
-                        if (newcoatType!= "Sin pelo" && newcoatType!= "Pelo corto" && newcoatType != "Pelo mediano" &&  newcoatType != "Pelo largo".ToLower())
+                        if (newcoatType != "Sin pelo" && newcoatType != "Pelo corto" && newcoatType != "Pelo mediano" && newcoatType != "Pelo largo".ToLower())
                         {
                             dogEdit.CoatType = newcoatType;
                         }
@@ -139,8 +188,127 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             }
         }
 
+        public void UpdateCat(List<Cat> cats, Guid Id)
+        {
+            var catEdit = cats.Find(d => d.GetId() == Id);
+            if (catEdit != null)
+            {
+                Console.WriteLine(@"Que dato de la mascota deseas editar:
+                            1. weightInKg
+                            2. breedingStatus
+                            5. FurLenght");
+                string editar = Console.ReadLine();
 
+                switch (editar)
+                {
+                    case "1":
+                        Console.WriteLine("Ingrese el nuevo peso en Kg");
+                        var newWeightInKg = Convert.ToDouble(Console.ReadLine());
+                        catEdit.SetWeightInKg(newWeightInKg);
+                        break;
+                    case "2":
+                        Console.WriteLine("Ingrese el nuevo estado de catracion (true/false)");
+                        var newbreedingStatus = Convert.ToBoolean(Console.ReadLine());
+                        catEdit.BreedingStatus = newbreedingStatus;
+                        break;
 
+                    case "3":
+                        Console.WriteLine("Ingrese la nueva longitud de pelo");
+                        var newFurLenght = Console.ReadLine().ToLower();
+                        if (newFurLenght != "Sin pelo" && newFurLenght != "Pelo corto" && newFurLenght != "Pelo mediano" && newFurLenght != "Pelo largo".ToLower())
+                        {
+                            catEdit.FurLenght = newFurLenght;
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Opcion invalida");
+                        break;
+                }
+            }
+        }
+
+        public void DeleteDog(List<Dog> dogs, Guid Id)
+        {
+            Console.WriteLine("Ingrese el Id de su perro");
+            var dogDelete = dogs.Find(d => d.GetId() == Id);
+            if (dogDelete != null)
+            {
+                dogs.Remove(dogDelete);
+                Console.WriteLine("Perro eliminado con éxito");
+            }
+        }
+        public void DeleteCat(List<Cat> cats, Guid Id)
+        {
+            Console.WriteLine("Ingrese el Id de su gato");
+            var catDelete = cats.Find(d => d.GetId() == Id);
+            if (catDelete != null)
+            {
+                cats.Remove(catDelete);
+                Console.WriteLine("Gato eliminado con éxito");
+            }
+        }
+
+        public void ShowAllPatients()
+        {
+            foreach (var dog in Dogs)
+            {
+                dog.ShowInforacion();
+            }
+            foreach (var cat in Cats)
+            {
+                cat.ShowInforacion();
+            }
+        }
+        public void ShowAnimals(string type)
+        {
+            if (type == "Perro".ToLower())
+            {
+                foreach (var dog in Dogs)
+                {
+                    dog.ShowInforacion();
+                }
+            }
+            else if (type == "Gato".ToLower())
+            {
+                foreach (var cat in Cats)
+                {
+                    cat.ShowInforacion();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Tipo de animal invalido");
+            }
+        }
+
+        public void ShowPaient(Guid Id)
+        {
+            var dog = Dogs.Find(d => d.GetId() == Id);
+            if (dog != null)
+            {
+                dog.ShowInforacion();
+            }
+            else
+            {
+                var cat = Cats.Find(c => c.GetId() == Id);
+                if (cat != null)
+                {
+                    cat.ShowInforacion();
+                }
+                else
+                {
+                    Console.WriteLine("Mascota no encontrada");
+                }
+            }
+        }
+
+        public static void PausarMenu()
+        {
+            Console.WriteLine("Presione ENTER para continuar...");
+            Console.ReadKey();
+
+        }
 
     }
 }

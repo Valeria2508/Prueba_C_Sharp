@@ -14,7 +14,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public string CoatType { get; set; }
 
         //se crea constructor
-        public Dog(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType) : base(id, name, birthdate, breed, color, weightInKg) //el base ya que el padre tambien tiene constructor
+        public Dog(string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType) : base(name, birthdate, breed, color, weightInKg) //el base ya que el padre tambien tiene constructor
         {
             BreedingStatus = breedingStatus;
             Temperament = temperament;

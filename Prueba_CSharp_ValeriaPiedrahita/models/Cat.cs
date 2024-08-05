@@ -12,7 +12,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public string FurLenght { get; set; }
 
         // constructor de la clase  
-        public Cat(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string furLenght) : base(id, name, birthdate, breed, color, weightInKg) //el base ya que el padre tambien tiene constructor
+        public Cat(string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string furLenght) : base( name, birthdate, breed, color, weightInKg) //el base ya que el padre tambien tiene constructor
         {
             BreedingStatus = breedingStatus;
             FurLenght = furLenght;

@@ -17,7 +17,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
 
         //constructor de la clase
 
-        public Animal(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg)
+        public Animal(string name, DateOnly birthdate, string breed, string color, double weightInKg)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -47,6 +47,13 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
 
         public Guid  GetId(){
             return Id;
+        }
+        public string GetName(){
+            return Name;
+        }
+
+        public double GetWeightInKg(){
+            return WeightInKg;
         }
         // public void SetNombre(string nuevoNombre){
         //     Name = nuevoNombre;

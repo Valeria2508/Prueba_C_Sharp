@@ -12,8 +12,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public static Dog CreateDog(){
             // se solicitan los datos al usuario y se guardan en variables
             Console.WriteLine("Por favor ingrese los siguientes datos del perro");
-            Console.WriteLine("Ingrese el id");
-            int id = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("Ingrese el nombre");
             string name = Console.ReadLine(); 
             Console.WriteLine("Ingrese la fecha de nacimiento (YYYY-MM-DD)");
@@ -29,7 +28,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             bool breedingStatus = Convert.ToBoolean(Console.ReadLine());
             Console.WriteLine("Ingrese el tipo de temperamento(Tímido, Normal o Agresivo. )".ToLower());
             string temperament = Console.ReadLine().ToLower();  // se convierte a minúsculas para comparar con los valores posibles.
-            if (temperament != "Timido" && temperament != " Normal" && temperament != "Agresivo") // se realizan validaciones con un ifelse
+            if (temperament != "timido" && temperament != "normal" && temperament != "agresivo".ToLower()) // se realizan validaciones con un ifelse
             {
                 Console.WriteLine("Opcion inválida");
                 return CreateDog();
@@ -37,25 +36,24 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
 
             Console.WriteLine("Ingrese el número de microchip");
             string microShipNumber = Console.ReadLine();
-            Console.WriteLine("");
-            Console.WriteLine("Ingrese que tan fuerte lagra".ToLower());
+            Console.WriteLine("Ingrese que tan fuerte ladra".ToLower());
             string barkVolume = Console.ReadLine();
-
             Console.WriteLine("Ingrese el tipo de pelo (Sin pelo, Pelo corto, Pelo mediano, Pelo largo.)".ToLower());
             string coatType = Console.ReadLine();
-            if (coatType!= "Sin pelo" && coatType!= "Pelo corto" && coatType != "Pelo mediano" &&  coatType != "Pelo largo".ToLower())
+            if (coatType!= "sin pelo" && coatType!= "pelo corto" && coatType != "pelo mediano" &&  coatType != "pelo largo".ToLower())
             {
                 Console.WriteLine("Opcion inválida");
                 return CreateDog();
             }// se realizan validaciones con un ifelse para validar que el usuario este ingresando bien los datos
 
-            return new Dog(id, name, birthdate1, breed, color, weightInKg, breedingStatus, temperament, microShipNumber, barkVolume, coatType);// se retorna una instancia
+            var newDog = new Dog(name, birthdate1, breed, color, weightInKg, breedingStatus, temperament, microShipNumber, barkVolume, coatType);
+
+            return newDog; // se retorna una instancia
         }
 
         public static Cat CreateCat(){
             Console.WriteLine("Por favor ingrese los siguientes datos del gato");
-            Console.WriteLine("Ingrese el id");
-            int id = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("Ingrese el nombre");
             string name = Console.ReadLine(); 
             Console.WriteLine("Ingrese la fecha de nacimiento (YYYY-MM-DD)");
@@ -70,13 +68,14 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             bool breedingStatus = Convert.ToBoolean(Console.ReadLine());
             Console.WriteLine("Ingrese la longitud del pelo (Sin pelo, Pelo corto, Pelo mediano, Pelo largo)");
             string furLenght = Console.ReadLine();
-            if (furLenght!= "Sin pelo" && furLenght!= "Pelo corto" && furLenght != "Pelo mediano" &&  furLenght != "Pelo largo".ToLower())
+            if (furLenght!= "sin" && furLenght!= "corto" && furLenght != "mediano" &&  furLenght != "largo".ToLower())
             {
                 Console.WriteLine("Opcion inválida");
                 return CreateCat();
+                
             }// se realizan validaciones con un ifelse para validar que el usuario este ingresando bien los datos
-
-            return new Cat(id, name, birthdate, breed, color, weightInKg, breedingStatus, furLenght);
+            var newCat = new Cat(name, birthdate, breed, color, weightInKg, breedingStatus, furLenght);
+            return newCat;
         }
 
         public static void ShowHeader(){
