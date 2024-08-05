@@ -23,7 +23,23 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             CoatType = coatType;
         }
 
+        public override void ShowInforacion(){
+            Console.WriteLine(@$"
+            Information of animal
+            Id: {Id}
+            Name: {Name}
+            Breed: {Breed}
+            Color: {Color}
+            Weight: {WeightInKg}kg
+            Age: {CalculateAgeInMonths()} months
+            Breeding Status: {BreedingStatus}
+            Temperament: {Temperament}
+            Microship Number: {MicroShipNumber}
+            Bark Volume: {BarkVolume}
+            Coat Type: {CoatType}");
+        }
         public void CreateAnimal (){
+
 
         }
 

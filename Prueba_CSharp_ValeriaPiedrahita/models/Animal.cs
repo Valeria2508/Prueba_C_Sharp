@@ -35,7 +35,9 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         }
 
         protected int CalculateAgeInMonths(){
-            return;
+            DateOnly CurrentDate = DateOnly.FromDateTime(DateTime.Now);//resta la fecha actual con la fecha de nacimiento
+            int age = CurrentDate.Month - Birthdate.Month;
+            return age;//devuelve la edad
         }
 
 
