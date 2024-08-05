@@ -58,12 +58,12 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         //se crea metodo con validacion para ver si se peluquea a la mascota
         public void Hairdress()
         {   
-            if (CoatType != "corto".ToLower())
-            {
-                Console.WriteLine("Se le corto el cabello al perro");
-            }else
+            if (CoatType == "Sin pelo" || CoatType == "Pelo corto".ToLower())
             {
                 Console.WriteLine("No se puede peluquear el perro ya que tiene el cabello corto");
+            }else
+            {
+                Console.WriteLine("Se le corto el cabello al perro");
             }
 
         }

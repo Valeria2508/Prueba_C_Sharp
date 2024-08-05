@@ -15,10 +15,10 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
 
         //constructor vacio de la clase
         
-         VeterinaryClinic()
-        {
-            
+         VeterinaryClinic(){
         }
+
+
         // constructor lleno  de la clase
         public VeterinaryClinic(string name, string address)
         {
@@ -27,7 +27,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         }
 
         public void SaveDog(Dog newDog){
-
+            
         }
 
 

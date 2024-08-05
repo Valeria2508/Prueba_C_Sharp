@@ -46,12 +46,12 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         }
         //se crea metodo con validacion para ver si se peluquea a la mascota
         public void Hairdress(){
-            if (FurLenght == "largo" || FurLenght == "muy largo")
-            {
-                Console.WriteLine("Se peluqieó al gato");
-            }else
+            if (FurLenght == "Sin pelo")
             {
                 Console.WriteLine("No se puede peluquear al gato ya que  no tiene pelaje");
+            }else
+            {
+                Console.WriteLine("Se peluqieó al gato");
             }
         }
 
