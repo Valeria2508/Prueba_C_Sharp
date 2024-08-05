@@ -13,8 +13,13 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public List<Dog> Dogs { get; set; }= new List<Dog>();// se crea e inicializan listas
         public List<Cat> Cats { get; set; } = new List<Cat>();
 
-
-        // constructor de la clase
+        //constructor vacio de la clase
+        
+         VeterinaryClinic()
+        {
+            
+        }
+        // constructor lleno  de la clase
         public VeterinaryClinic(string name, string address)
         {
             Name = name;
@@ -22,7 +27,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         }
 
         public void SaveDog(Dog newDog){
-            
+
         }
 
 

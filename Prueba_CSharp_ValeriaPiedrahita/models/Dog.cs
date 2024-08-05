@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 namespace Prueba_CSharp_ValeriaPiedrahita.models
 {
     public class Dog
-    {
+    {   // se crena atributos
         public bool BreedingStatus { get; set; }
         public string Temperament { get; set; }
         public string MicroShipNumber { get; set; }
         public string BarkVolume { get; set; }
         public string CoatType { get; set; }
 
+        //se crea constructor
         public Dog(bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType)
         {
             BreedingStatus = breedingStatus;
@@ -22,6 +23,15 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             CoatType = coatType;
         }
 
-        
+        public void CreateAnimal (){
+
+        }
+
+        public void Hairdress(){
+
+        }
+
+
+
     }
 }
