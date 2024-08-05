@@ -27,13 +27,16 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             WeightInKg = weightInKg;
         }
 
+        //metodo abracto para mostrar infacion de la mascota, dog and cat
         public abstract void ShowInforacion();
 
         protected void BasicReview(){
-
+            Console.WriteLine(@$"
+            the dog that answers to the name {Name}, he is {CalculateAgeInMonths()} years old
+            and is a {Breed} breed. He has a {Color} color, with very particular green spots. and weighs {WeightInKg} kg.");
 
         }
-
+        // metodo para calcular edad del animal, se ve reflejada en el metodo ShowInforacion en dog and cat
         protected int CalculateAgeInMonths(){
             DateOnly CurrentDate = DateOnly.FromDateTime(DateTime.Now);//resta la fecha actual con la fecha de nacimiento
             int age = CurrentDate.Month - Birthdate.Month;
