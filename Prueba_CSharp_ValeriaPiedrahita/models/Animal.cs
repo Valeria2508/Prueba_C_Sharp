@@ -8,7 +8,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
     public abstract class Animal
     {   
         //se crean atributos protegidos
-        protected int Id { get; set; }
+        protected Guid Id { get; set; }
         protected string Name { get; set; }
         protected DateOnly Birthdate { get; set; }
         protected string Breed  { get; set; }
@@ -19,7 +19,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
 
         public Animal(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Name = name;
             Birthdate = birthdate;
             Breed = breed;
