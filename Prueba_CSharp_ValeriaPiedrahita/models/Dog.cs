@@ -51,7 +51,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             else
             {
                 Console.WriteLine("El animal aun NO se encuentra castrado, aun se puede reproducir");
-                BreedingStatus = true;
+                BreedingStatus = false;
             }
         }
 
