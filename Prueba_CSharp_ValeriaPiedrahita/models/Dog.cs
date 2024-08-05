@@ -14,7 +14,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public string CoatType { get; set; }
 
         //se crea constructor
-        public Dog(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType): base(id, name, birthdate, breed, color, weightInKg)
+        public Dog(int id, string name, DateOnly birthdate, string breed, string color, double weightInKg, bool breedingStatus, string temperament, string microShipNumber, string barkVolume, string coatType) : base(id, name, birthdate, breed, color, weightInKg)
         {
             BreedingStatus = breedingStatus;
             Temperament = temperament;
@@ -23,7 +23,8 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             CoatType = coatType;
         }
 
-        public override void ShowInforacion(){
+        public override void ShowInforacion()
+        {
             Console.WriteLine(@$"
             Information of animal
             Id: {Id}
@@ -38,37 +39,30 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             Bark Volume: {BarkVolume}
             Coat Type: {CoatType}");
         }
-        public void CastrateAnimal (){
+        public void CastrateAnimal()
+        {
             if (BreedingStatus == false)
             {
                 Console.WriteLine("El animal YA se encuentra castrado, no se puede reproducir");
-                BreedingStatus = true;
-            }else
+            }
+            else
             {
                 Console.WriteLine("El animal aun NO se encuentra castrado, aun se puede reproducir");
-                Console.WriteLine("Desea castrarrlo?");
-                string castrar = Console.ReadLine();
-                if (castrar == "si".ToLower())
-                {
-                    Console.WriteLine("El animal YA se encuentra castrado, no se puede reproducir");
-                    BreedingStatus = true;
-                }else
-                {
-                    Console.WriteLine("El animal aun NO se encuentra castrado, aun se puede reproducir");
-                }
+                BreedingStatus = true;
             }
         }
 
-        public void Hairdress(){
-            Console.WriteLine("Escriba (si) ");
-            if (CoatType == "")
+        public void Hairdress()
+        {   
+            if (CoatType != "corto".ToLower())
             {
-                
+                Console.WriteLine("Se le corto el cabello al perro");
+            }else
+            {
+                Console.WriteLine("No se puede peluquear el perro ya que tiene el cabello corto");
             }
-            
+
         }
-
-
 
     }
 }
