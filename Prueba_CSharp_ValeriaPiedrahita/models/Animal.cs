@@ -30,10 +30,14 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         //metodo abracto para mostrar infacion de la mascota, dog and cat
         public abstract void ShowInforacion();
 
+        // metodo para mostrar una breve informacion de la mascota
         protected void BasicReview(){
             Console.WriteLine(@$"
             the dog that answers to the name {Name}, he is {CalculateAgeInMonths()} years old
             and is a {Breed} breed. He has a {Color} color, with very particular green spots. and weighs {WeightInKg} kg.");
+
+            Console.WriteLine(@$"
+            the cat with the id  {Id}, is called {Name}, has a very bright color  {Color} ");
 
         }
         // metodo para calcular edad del animal, se ve reflejada en el metodo ShowInforacion en dog and cat
