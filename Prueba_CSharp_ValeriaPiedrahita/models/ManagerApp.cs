@@ -69,6 +69,11 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             bool breedingStatus = Convert.ToBoolean(Console.ReadLine());
             Console.WriteLine("Ingrese la longitud del pelo (Sin pelo, Pelo corto, Pelo mediano, Pelo largo)");
             string furLenght = Console.ReadLine();
+            if (furLenght!= "Sin pelo" && furLenght!= "Pelo corto" && furLenght != "Pelo mediano" &&  furLenght != "Pelo largo".ToLower())
+            {
+                Console.WriteLine("Opcion inválida");
+                return CreateCat();
+            }// se realizan validaciones con un ifelse para validar que el usuario este ingresando bien los datos
 
             return new Cat(id, name, birthdate, breed, color, weightInKg, breedingStatus, furLenght);
         }

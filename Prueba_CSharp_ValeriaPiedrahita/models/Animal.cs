@@ -45,6 +45,10 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
             return age;//devuelve la edad
         }
 
+        public Guid  GetId(){
+            return Id;
+        }
+
 
     }
 }
