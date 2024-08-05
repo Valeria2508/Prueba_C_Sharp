@@ -33,23 +33,27 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
         public static void Menu()
         {
             var veterinary = new VeterinaryClinic();
-            var perro1 = new Dog("bruno", new DateOnly(2020, 02, 02), "sad", "sd", 19.6, true, "timido", "12", "sdf", "Sin pelo");
+            var perro1 = new Dog("bruno", new DateOnly(2020, 02, 02), "sad", "sd", 19.6, true, "timido", "12", "sdf", "Sin largo");
             veterinary.SaveDog(perro1);
 
             bool exit = false;
             while (!exit)
             {
+                ManagerApp.ShowHeader();
+                
+
                 Console.WriteLine("=========================================================================================");
                 Console.WriteLine("                           Centro de Veterinaria                                     ");
                 Console.WriteLine("=========================================================================================");
+                ManagerApp.Separator();
                 Console.WriteLine("                            Ingrese su opción:                                           ");
                 Console.WriteLine("                             1. Save a Cat                                              ");
                 Console.WriteLine("                             2. Save a Dog                                               ");
-                Console.WriteLine("                             3. Update Dog                                               ");
-                Console.WriteLine("                             4. Update Cat                                               ");
-                Console.WriteLine("                             5. Delete Dog                                               ");
-                Console.WriteLine("                             6. Delete Cat                                               ");
-                Console.WriteLine("                             7. Show All Patients                                        ");
+                Console.WriteLine("                             3. Show All Patients                                        ");
+                Console.WriteLine("                             4. Update Dog                                               ");
+                Console.WriteLine("                             5. Update Cat                                               ");
+                Console.WriteLine("                             6. Delete Dog                                               ");
+                Console.WriteLine("                             7. Delete Cat                                               ");
                 Console.WriteLine("                             8. Show Animals                                             ");
                 Console.WriteLine("                             9. Show Paients                                             ");
                 Console.WriteLine("                             10. CastrateAnimal                                          ");
@@ -57,7 +61,10 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 Console.WriteLine("                             0. Exit                                                     ");
                 Console.WriteLine("=========================================================================================");
 
-                string option = Console.ReadLine();
+                ManagerApp.ShowFooter();
+
+
+                string option = Console.ReadLine(); // variable para saber la respuesta del usuario
 
                 switch (option)
                 {
@@ -197,7 +204,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 }
             }
         }
-
+        //metodo para editar gato
         public void UpdateCat(List<Cat> cats, Guid Id)
         {
             var catEdit = cats.Find(d => d.GetId() == Id);
@@ -237,7 +244,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 }
             }
         }
-
+        //metodo eliminar perro por id
         public void DeleteDog(List<Dog> dogs, Guid Id)
         {
             Console.WriteLine("Ingrese el Id de su perro");
@@ -248,6 +255,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 Console.WriteLine("Perro eliminado con éxito");
             }
         }
+        //metodo eliminar gato por id
         public void DeleteCat(List<Cat> cats, Guid Id)
         {
             Console.WriteLine("Ingrese el Id de su gato");
@@ -258,18 +266,22 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 Console.WriteLine("Gato eliminado con éxito");
             }
         }
-
+        //metodo mostrar todos los pacientes
         public void ShowAllPatients()
         {
             foreach (var dog in Dogs)
             {
                 dog.ShowInforacion();
+                ManagerApp.Separator();
             }
             foreach (var cat in Cats)
             {
                 cat.ShowInforacion();
+                ManagerApp.Separator();
             }
+
         }
+        //metodo mostrar animales por tipo
         public void ShowAnimals(string type)
         {
             if (type == "Perro".ToLower())
@@ -277,6 +289,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 foreach (var dog in Dogs)
                 {
                     dog.ShowInforacion();
+                    ManagerApp.Separator();
                 }
             }
             else if (type == "Gato".ToLower())
@@ -284,6 +297,7 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 foreach (var cat in Cats)
                 {
                     cat.ShowInforacion();
+                    ManagerApp.Separator();
                 }
             }
             else
@@ -291,13 +305,14 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 Console.WriteLine("Tipo de animal invalido");
             }
         }
-
+        //metodo mostrar paciente por id
         public void ShowPaient(Guid Id)
         {
             var dog = Dogs.Find(d => d.GetId() == Id);
             if (dog != null)
             {
                 dog.ShowInforacion();
+                ManagerApp.Separator();
             }
             else
             {
@@ -305,14 +320,16 @@ namespace Prueba_CSharp_ValeriaPiedrahita.models
                 if (cat != null)
                 {
                     cat.ShowInforacion();
+                    ManagerApp.Separator();
                 }
                 else
                 {
                     Console.WriteLine("Mascota no encontrada");
+                    ManagerApp.Separator();
                 }
             }
         }
-
+        //metodo pausar menu
         public static void PausarMenu()
         {
             Console.WriteLine("Presione ENTER para continuar...");
